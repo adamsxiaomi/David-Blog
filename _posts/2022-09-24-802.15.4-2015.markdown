@@ -1,0 +1,580 @@
+---
+layout: post
+title:  "802.15.4-2015"
+date:   2022-09-24 22:22:28 +0800
+categories: jekyll update
+---
+
+# 802.15.4-2015
+## 目录
+[TOC]
+## 3.Definitions,acronyms,and abbreviations
+### 3.1 Definitions
+For the purposes of this document, the following terms and definitions apply. The IEEE Standards Dictionary should be consulted for terms not defined in this clause.
+
+为了完成本标准，使用了以下的术语和定义。没有在下面定义的其它术语可以在 The Authoritative Dictionary of IEEE Standards Terms 第七版 [B3].4 中找到。
+
+
+> association: The service used to establish membership for a device in a network.
+
+> authentication tag: Information that allows the verification of authenticity of a message.
+
+> channel hopping: Periodically switching the channel using a sequence known to both sending and receiving
+
+> devices where the entire frame is sent on a single channel.
+
+> channel offset: A number used in the channel calculation of a slotted channel hopping system to allow for different channels to be used in the same slot.
+
+> chirp: Linear frequency sweep (frequency may either increase or decrease).
+dependent device: A device that operates without direct Internet access to the television white space (TVWS) database and depends on another device for channel availability information.
+
+> encryption: The transformation of a message into a new representation so that privileged information is required to recover the original representation.
+fragment: An individual subset of a MAC protocol data unit.
+
+> frame: The format of aggregated bits from a medium access control sublayer entity that are transmitted together in time.
+
+> group key: A key that is known only to a set of devices.
+
+> independent device: A device that has direct access to the television white space (TVWS) database via the Internet.
+
+> key: Privileged information that may be used, for example, to protect information from disclosure to, and/or undetectable modification by, parties that do not have access to this privileged information.
+
+> keying material: The combination of a key and associated security information (e.g., a nonce value).
+
+> link key: A secret key that is shared between precisely two devices.
+
+> mobile device: A device whose location in the network may change during use.
+nonce: A nonrepeating value, such as an increasing counter, a sufficiently long random string, or a time stamp.
+
+> packet: The formatted, aggregated bits that are transmitted together in time across the physical medium.
+
+> payload data: The contents of a data message that is being transmitted.
+
+## 5. General description 
+### 5.1 Introduction
+
+A low-rate wireless personal area network (LR-WPAN) is a simple, low-cost communication network that allows wireless connectivity in applications with limited power and relaxed throughput requirements. The
+main objectives of an LR-WPAN are ease of installation, reliable data transfer, extremely low cost, and a reasonable battery life, while maintaining a simple and flexible protocol.
+* This standard defines multiple PHYs operating in a variety of frequency bands, as described in 10.1.1.
+* Two different device types can participate in an IEEE 802.15.4 network: a full-function device (FFD) and a
+reduced-function device (RFD). An FFD is a device that is capable of serving as a personal area network(PAN) coordinator or a coordinator, as defined in 6.1. An RFD is a device that is not capable of serving as either a PAN coordinator or a coordinator. An RFD is intended for applications that are extremely simple,such as a light switch or a passive infrared sensor; it does not have the need to send large amounts of data
+and only associates with a single FFD at a time. Consequently, the RFD can be implemented using minimal
+resources and memory capacity.
+* Supplemental information for different industrial domains is described in “Applications of IEEE Std 802.15.4” [B3].
+* 
+## 5.概述
+## 5.1简介
+
+低速率无线个域网（LR-WPAN）是一种简单，低成本的通信网络，允许在功率有限且吞吐量要求宽松的应用中实现无线连接。 LR-WPAN的主要目标是易于安装，可靠的数据传输，极低的成本和合理的电池寿命，同时保持简单灵活的协议。该标准定义了在各种频段工作的多个PHY，如上所述在10.1.1。
+两种不同的设备类型可以参与IEEE802.15.4网络：全功能设备（FFD）和功能降低设备（RFD）。FFD是一种能够用作个人局域网（PAN）协调器或协调器的设备，如6.1中所定义。 RFD是不能用作PAN协调器或协调器的设备。RFD适用于极其简单的应用，例如灯开关或被动红外传感器;它不需要发送大量数据并且一次只与一个FFD相关联。因此，RFD可以使用最小的实现资源和记忆容量。
+“IEEE Std 802.15.4的应用”[B3]中描述了不同工业领域的补充信息。
+## 5.2 Special application spaces
+- Although this standard is intended address many diverse application spaces, some application spaces have unique requirements which required specific elements added to this standard.These elements are described in this subclause.
+### 5.2.1 Smart utility network (SUN)
+SUNs enable multiple applications to operate over shared network resources, providing monitoring and
+control of a utility system. SUN devices are designed to operate in very large-scale, low-power wireless
+applications and often require using the maximum transmit power available under applicable regulations, in
+order to provide long-range, point-to-point connections. Frequently, SUNs are required to cover
+geographically widespread areas containing a large number of outdoor devices. In these cases, SUN devices
+are able to employ mesh or peer-to-peer multihop techniques to communicate with an access point.
+### 5.2.1 智能有效网络
+SUN允许多个应用程序在共享网络资源上运行，提供监控和
+控制公用事业系统。 SUN设备设计用于非常大规模，低功耗的无线设备
+应用程序通常需要使用适用法规规定的最大传输功率
+以提供远程，点对点连接。 通常，SUN需要承保
+地理上广泛的区域，包含大量的户外设备。 在这些情况下，SUN设备
+能够使用网格或对等多跳技术与接入点通信。
+### 5.2.2 Rail communications and control (RCC)
+RCC refers to a wireless information exchange and sensor or control communications deployed in areas
+such as the following:
+A wireless link between trains, locomotives, or other mobile rolling stock to fixed trackside or network infrastructure
+
+> A link between connected fixed, remote trackside infrastructure and fixed network infrastructure
+
+> A link between vehicles in the same train or between two or more trains
+
+RCC devices are intended to support mobile rail vehicle communications at high speeds with data rates that
+enable connections at distances of over 50 km. The RCC PHYs are designed to take advantage of relatively
+small amounts of spectrum where spectrum is costly or scarce.
+
+
+### 5.2.2 链路通信和控制（RCC）
+RCC指的是在区域中部署的无线信息交换和传感器或控制通信
+如下：
+>  - 链路，机车或其他移动机车车辆与固定轨道或车辆之间的无线连接
+网络基础设施
+
+> - 连接的固定远程轨道侧基础设施与固定网络基础设施之间的链路
+
+> - 同一链路内或两列或更多链路之间的链路之间的链接
+
+RCC设备旨在以高速率支持移动轨道车辆通信，其数据速率为
+实现距离超过50公里的连接。 RCC PHY旨在相对利用
+频谱成本高或稀缺的少量频谱。
+
+### 5.2.3 Television white space (TVWS)
+TVWS operation has the requirement to determine which TVWS frequency allocations are available for use
+at a given time and geographic location. TVWS devices need to have have access to TVWS channel
+availability information, for example, via a central database that is accessed over the Internet. A TVWS
+device that has no connection to the Internet must depend upon another TVWS device that has access to the
+TVWS database via the Internet to acquire channel availability information.
+
+TVWS操作需要确定在给定时间和地理位置可以使用哪些TVWS频率分配。TVWS设备需要能够访问TVWS信道可用性信息，例如，通过互联网访问的中央数据库。没有连接到因特网的TVWS设备必须依赖于另一个TVWS设备，该TVWS设备可以通过因特网访问TVWS数据库以获取信道可用性信息。
+
+### 5.2.4 Radio frequency identification (RFID)
+- Active RFID devices are used to identify and often locate people or objects in industrial or commercial
+environments. Typical applications include asset management, inventory management, process control and
+automation, safety and accountability.
+In its simplest form an active RFID system comprises a number of transmit-only tags that periodically
+transmit a packet containing a unique ID and a small amount of data. The packet is received by one or more
+readers that may simply register the tag as present, may employ further processing to determine the location
+of the tag, or forward data to an application server. More complex active RFID systems might employ twoway communications with the tag for control, communication, and coordination.
+
+有源RFID设备用于在工业或商业环境中识别和定位人或物体。典型的应用包括资产管理、库存管理、过程控制和自动化、安全和问责制。在最简单的形式中，有源RFID系统包括若干只发送标签，这些标签周期性地发送包含唯一ID和少量数据的分组。数据包由一个或多个读取器接收，这些读取器可以简单地将标签注册为存在，可以采用进一步的处理来确定标签的位置，或者将数据转发到应用服务器。更复杂的主动RFID系统可能采用与标签的双向通信来控制、通信和协调。
+
+
+### 5.2.5 Low-energy, critical infrastructure monitoring (LECIM)
+The LECIM portions of this standard are designed to implement a minimal network infrastructure that
+enables the collection of scheduled and event data from a large number of non-mains powered end points
+that are widely dispersed, or are in challenging propagation environments. To facilitate low energy operation
+necessary for multi-year battery life, MAC protocols that minimize network maintenance traffic and device
+wake durations have been defined.
+
+这个标准的LECIM部分被设计成实现最小的网络基础设施，其中
+启用从大量非主电源端点收集计划数据和事件数据
+这是广泛分散，或在具有挑战性的传播环境。促进低能耗运行
+需要多年的电池寿命，使网络维护流量和设备最小化的MAC协议
+定义了唤醒持续时间。
+### 5.2.6 Medical body area network (MBAN) services
+Some countries have allocated spectrum for MBAN services on a secondary basis such that MBAN devices
+are required to protect all primary users and accept possible interference from those users. MBAN devices
+operating within this allocated spectrum conform to a set of rules which restrict use of the band to only
+medical, non-voice use under direction of a healthcare practitioner, among other requirements. When a
+primary user is making use of a portion of the band, MBAN devices vacate that portion of the band. Use of
+the band by the primary user is, in general, scheduled well in advance allowing MBAN users to share the
+band in an orderly manner.
+
+一些国家在次要基础上为MBAN服务分配了频谱，以便要求MBAN设备保护所有主用户并接受来自这些用户的可能干扰。在此分配的频谱内操作的MBAN设备符合一组规则，这些规则将频带的使用限制为在医疗从业者的指导下仅医疗、非语音使用，以及其他要求。当主用户正在使用频带的一部分时，MBAN设备将腾出频带的该部分。一般来说，主用户对频带的使用提前安排得很好，允许MBAN用户以有序的方式共享频带。
+
+## 5.3 Components of the IEEE 802.15.4 WPAN
+A system conforming to this standard consists of several components. The most basic is the device. A device
+has a single radio interface that implements an IEEE Std 802.15.4 MAC and PHY. Two or more devices
+communicating on the same physical channel constitute a wireless personal area network (WPAN). A
+WPAN includes at least one FFD, operating as the PAN coordinator.
+
+符合这一标准的系统由几个部件组成。最基本的是设备。设备具有实现IEEE Std 802.15.4MAC和PHY的单个无线电接口。在同一物理信道上通信的两个或多个设备构成无线个人区域网络(WPAN)。WPAN包括至少一个FFD，作为PAN协调器工作。
+
+
+## 5.4 Multi-PHY management (MPM) of the SUN WPAN
+Multiple, different SUN PHYs can operate in the same location and within the same frequency band. In
+order to mitigate interference, an MPM scheme is specified for SUNs to facilitate inter-PHY coexistence.
+For this purpose, the MPM scheme facilitates interoperability and negotiation among potential coordinators
+with different PHYs by permitting a potential coordinator to detect an operating network during its
+discovery phase using the common signaling mode (CSM) appropriate to the band being used. The MPMIEEE Std 802.15.4-2015
+IEEE Standard for Low-Rate Wireless Networks
+46
+Copyright © 2016 IEEE. All rights reserved.
+procedure can be used in conjunction with the clear channel assessment (CCA) mechanism to provide
+coexistence.
+
+多个不同的SUN PHY可以在相同的位置和相同的频带内工作。为了减少干扰，为SUN指定了MPM方案，以便于PHY间共存。为此，MPM方案通过允许潜在协调器在其发现阶段使用适合于所使用的频带的公共信令模式(CSM)来检测操作网络，从而促进具有不同PHY的潜在协调器之间的互操作性和协商。MPMIEEE Std 802.15.4-2015低速率无线网络IEEE标准46版权_2016 IEEE。版权所有。程序可以与清晰通道评估（CCA）机制结合使用，以提供共存。
+
+
+## 5.5 Network topologies
+Depending on the application requirements, an IEEE 802.15.4 LR-WPAN operates in either of two
+topologies: the star topology or the peer-to-peer topology. Both are shown in Figure 5-1. In the star
+topology, the communication is established between devices and a single central controller, called the PAN
+coordinator. A device typically has some associated application and is either the initiation point or the
+termination point for network communications. The PAN coordinator is the primary controller of the PAN.
+All devices operating on a network of either topology have unique addresses, referred to as extended
+addresses. In addition, a device can be assigned a short address during the association process. A device will
+use either the extended address or the short address for communication within the PAN. The transmission of
+the extended and short address fields is optional for RFD-TX devices. The PAN coordinator will often be
+mains powered, while the devices will likely be battery powered. Applications that benefit from a star
+topology include home automation, personal computer (PC) peripherals, games, and personal health care.
+
+根据应用需求，IEEE 802.15.4LR-WPAN可以在以下两种方式中的任何一种中操作拓扑结构：星型拓扑结构或对等拓扑结构。两者都显示在图5-1中。星型拓扑结构，在设备和单个中央控制器之间建立通信，称为PAN协调员。设备通常具有一些关联的应用程序，并且是启动点或网络通信的终止点。PAN协调器是PAN的主要控制器。在任一拓扑的网络上操作的所有设备都具有唯一的地址，称为扩展地址。此外，可以在关联过程中为设备分配短地址。设备将使用扩展地址或短地址在PAN内进行通信。传输扩展和短地址字段对于RFD-TX设备是可选的。PAN协调员通常是电源供电，而设备可能是电池供电。受益于明星的应用拓扑结构包括家庭自动化、个人计算机（PC）外围设备、游戏和个人医疗保健。
+
+
+![image](https://note.youdao.com/yws/res/639/8991D4568D1544B386BEE85D1B5E27F0)
+
+The peer-to-peer topology also has a PAN coordinator; however, it differs from the star topology in that any
+device is able to communicate with any other device as long as they are in range of one another. Peer-to-peer
+topology allows more complex network formations to be implemented, such as mesh networking topology.
+Applications such as industrial control and monitoring, wireless sensor networks, asset and inventory
+tracking, intelligent agriculture, and security would benefit from such a network topology. A peer-to-peer
+network allows multiple hops to route messages from any device to any other device on the network. Such
+functions can be added at the higher layer, but they are not part of this standard.
+Each independent PAN selects a unique identifier. This PAN identifier (ID) allows communication between
+devices within a network using short addresses and enables transmissions between devices across
+independent networks. The mechanism by which identifiers are chosen is outside the scope of this standard.
+The network formation is performed by the higher layer, which is not part of this standard.
+
+对等拓扑还具有PAN协调器；但是，它与星形拓扑的不同之处在于
+设备能够与任何其他设备通信，只要它们处于彼此的范围内。对等网络
+拓扑允许实现更复杂的网络结构，例如网格网络拓扑。
+工业控制和监测、无线传感器网络、资产和库存等应用
+跟踪、智能农业和安全将受益于这样的网络拓扑。点对点
+网络允许多跳将消息从任何设备路由到网络上的任何其他设备。这样
+可以在更高层添加函数，但它们不是这个标准的一部分。
+每个独立的PAN选择一个唯一的标识符。这个PAN标识符（ID）允许在
+使用短地址的网络内的设备，并允许设备之间的传输
+独立网络。选择标识符的机制超出了本标准的范围。
+网络形成是由较高层执行的，它不是本标准的一部分。
+
+An example of the use of the peer-to-peer communications topology is the cluster tree. The cluster tree
+network is a special case of a peer-to-peer network in which most devices are FFDs. An RFD connects to a
+cluster tree network as a leaf device at the end of a branch because RFDs do not allow other devices to
+associate. Any FFD is able to act as a coordinator and provide synchronization services to other devices or
+other coordinators. Only one of these coordinators is the overall PAN coordinator, potentially because it has
+greater computational resources than any other device in the PAN. The PAN coordinator forms the first
+cluster by choosing an unused PAN ID and broadcasting beacon frames to neighboring devices. A
+contention resolution mechanism is required if two or more FFDs simultaneously attempt to establish
+themselves as PAN coordinators; however, such a mechanism is outside the scope of this standard. A
+candidate device receiving a beacon frame is able to request to join the network at the PAN coordinator. If
+the PAN coordinator permits the device to join, it adds the new device as a child device in its neighbor list.
+Then the newly joined device adds the PAN coordinator as its parent in its neighbor list and begins
+transmitting periodic beacons; other candidate devices are able to then join the network at that device. If the
+original candidate device is not able to join the network at the PAN coordinator, it will search for another
+parent device. The detailed procedures describing how a PAN is started and how devices join a PAN are
+found in 6.3 and 6.4.
+
+使用对等通信拓扑的一个示例是集群树。集群树网络是对等网络的特殊情况，其中大多数设备是FFD。RFD在分支的末尾作为叶设备连接到集群树网络，因为RFD不允许其他设备关联。任何FFD都可以充当协调器，并向其他设备或其他协调器提供同步服务。这些协调器中只有一个是整个PAN协调器，可能是因为它比PAN中的任何其他设备具有更大的计算资源。PAN协调器通过选择未使用的PAN ID和向相邻设备广播信标帧来形成第一集群。如果两个或多个FFD同时试图建立自己作为PAN协调器，则需要争用解决机制；然而，这种机制超出了本标准的范围。接收信标帧的候选设备能够请求在PAN协调器处加入网络。如果PAN协调器允许设备加入，它将新设备作为子设备添加到其邻居列表中。然后，新加入的设备在其邻居列表中添加PAN协调器作为其父节点，并开始发送周期性信标；然后其他候选设备能够在该设备上加入网络。如果原始候选设备不能在PAN协调器处加入网络，它将搜索另一个父设备。描述PAN如何启动以及设备如何加入PAN的详细过程见6.3和6.4。
+
+The simplest form of a cluster tree network is a single cluster network, but larger networks are possible by
+forming a mesh of multiple neighboring clusters. Once predetermined application or network requirements
+are met, the first PAN coordinator instructs a device to become the PAN coordinator of a new cluster
+adjacent to the first one. Other devices gradually connect and form a multicluster network structure, such as
+the one seen in Figure 5-2. The lines in Figure 5-2 represent the parent-child relationships of the devices and
+not the communication flow. The advantage of a multicluster structure is increased coverage area, while the
+disadvantage is an increase in message latency.
+
+集群树网络的最简单形式是单个集群网络，但是通过形成多个相邻集群的网格，更大的网络是可能的。一旦满足预定的应用或网络要求，第一PAN协调器指示设备成为与第一集群相邻的新集群的PAN协调器。其他设备逐渐连接并形成多集群网络结构，如图5-2所示。图5-2中的线表示设备的父子关系，而不是通信流。多集群结构的优点是覆盖面积增加，缺点是消息延迟增加。
+
+A TMCTP is a form of cluster tree network where the SPC is the overall PAN coordinator providing synchronization services to other PAN coordinators in the cluster. The SPC also has access to the geolocation database (GDB) server to provide TVWS channel availability information to other PAN coordinators. An example is shown in Figure 5-3. In the TMCTP, collisions between clusters can be reduced because each cluster uses its own channel; in addition, the coverage area is increased through the TMCTP parent-child structure. Each TMCTP-parent PAN coordinator, including the SPC, communicates with its TMCTP-child PAN coordinators during the CAP or CFP of the TMCTP-parent PAN coordinator superframe and receives beacon frames of its TMCTP-child PAN coordinators on a dedicated channel during the dedicated beacon slots (DBS) assigned to them in the BOP, as shown with an asterisk (*) in Figure 5-3.
+
+TMCTP是集群树网络的一种形式，其中SPC是向集群中的其他PAN协调器提供同步服务的整个PAN协调器。SPC还可以访问地理位置数据库（GDB）服务器，以便向其他PAN协调器提供TVWS信道可用性信息。图5-3显示了一个例子。在TMCTP中，由于每个集群使用自己的信道，因此可以减少集群之间的冲突；此外，通过TMCTP父子结构增加覆盖面积。每个TMCTP-父PAN协调器，包括SPC，在TMCTP-父PAN协调器超帧的CAP或CFP期间与其TMCTP-子PAN协调器通信，并且在专用信标时隙(DBS)期间在专用信道上接收其TMCTP-子PAN协调器的信标帧。在BOP中分配给它们，如图5-3中的星号（*）所示。
+![image](https://note.youdao.com/yws/res/648/A23D68B18D78467CBC59998D6F07560D)
+![image](https://note.youdao.com/yws/res/650/A652AAF1601744519E2EC3546612BF58)
+## 5.6 Architecture
+The IEEE 802.15.4 architecture is defined in terms of a number of blocks in order to simplify the standard.
+These blocks are called layers. Each layer is responsible for one part of the standard and offers services to
+the higher layers.
+
+The interfaces between the layers serve to define the logical links that are described in this standard.
+
+An LR-WPAN device comprises at least one PHY, which contains the radio frequency (RF) transceiver
+along with its low-level control mechanism, and a MAC sublayer that provides access to the physical
+channel for all types of transfer. Figure 5-4 shows these blocks in a graphical representation.
+
+为了简化标准，IEEE 802.15.4架构根据多个块定义。这些块被称为层。每个层负责标准的一部分并提供服务。更高的层次。层之间的接口用于定义本标准中描述的逻辑链接。LR-WPAN设备包括至少一个PHY，该PHY包含射频(RF)收发器。连同其底层控制机制，以及提供对物理层的访问的MAC子层所有类型的传输通道。图5-4以图形表示的方式显示这些块。
+
+![image](https://note.youdao.com/yws/res/658/60A143B2F8A142598CC9B54A03C83D84)
+
+The next higher layers, shown in Figure 5-4, consist of a network layer, which provides network
+configuration, manipulation, and message routing, and an application layer, which provides the intended
+function of the device. The definition of these layers is outside the scope of this standard.
+
+接下来的较高层，如图5-4所示，包括提供网络配置、操纵和消息路由的网络层，以及提供设备的预期功能的应用层。这些层的定义超出了本标准的范围。
+### 5.6.1 PHY
+The features of the PHY are activation and deactivation of the radio transceiver, energy detection (ED), link
+quality indication (LQI), channel selection, CCA, ranging and transmitting as well as receiving packets
+across the physical medium. The HRP UWB PHY also has the feature of precision ranging.
+Coexistence with other wireless standards has been analyzed for the PHYs defined in this standard. These
+analyses can be found in the following documents:
+— For the O-QPSK PHY, BPSK PHY, ASK PHY, CSSS PHY, HRP UWB PHY, and GFSK PHY:
+“Coexistence analysis of IEEE Std 802.15.4 with other IEEE standards and proposed standards”
+[B5].
+— For the MSK PHY and LRP UWB PHY: “TG4f Coexistence Assurance Document” [B17].
+— For TVWS-FSK PHY, TVWS-OFDM PHY, and TVWS-NB-OFDM PHY: Chang and Seibert [B4].
+
+PHY的特征是激活和停用无线电收发机、能量检测(ED)、链路质量指示(LQI)、信道选择、CCA、测距和发射以及通过物理介质接收分组。HRP UWB PHY还具有精确测距的特点。对于本标准中定义的PHY，已经分析了与其他无线标准的共存性。这些分析可以在以下文档中找到：-对于O-QPSK PHY、BPSK PHY、ASK PHY、CSSS PHY、HRP UWB PHY和GFSK PHY：“IEEE Std 802.15.4与其他IEEE标准和建议的标准的共存性分析”[B5]。-对于MSK物理和LRP UWB物理：“TG4f共存保证文件”[B17]。-对于TVWS-FSK PHY、TVWS-OFDM PHY和TVWS-NB-OFDM PHY：Chang和Sibert[B4]。
+### 5.6.2 MAC sublayer
+The MAC sublayer provides two services: the MAC data service and the MAC management service interfacing to the MAC sublayer management entity (MLME) service access point (SAP) (known as MLME-SAP). The MAC data service enables the transmission and reception of MAC protocol data units (MPDUs) across the PHY data service. The features of the MAC sublayer are beacon management, channel access, GTS management, frame validation, acknowledged frame delivery, association, and disassociation. In addition, the MAC sublayer provides hooks for implementing application-appropriate security mechanisms. Figure 5-4—LR-WPAN device architecture Next higher layers MAC MCPS-SAP MLME-SAP PHY PD-SAP PLME-SAP Physical mediumIEEE Std 802.15.4-2015 IEEE Standard for Low-Rate Wireless Networks 50 Copyright © 2016 IEEE. All rights reserved.
+
+MAC子层提供两个服务：MAC数据服务和连接到MAC子层管理实体(MLME)服务接入点(SAP)的MAC管理服务(称为MLME-SAP)。MAC数据服务允许通过PHY数据服务发送和接收MAC协议数据单元(MPDU)。MAC子层的特征是信标管理、信道接入、GTS管理、帧验证、确认帧传送、关联和分离。此外，MAC子层提供用于实现适合应用程序的安全机制的挂钩。图5-4-LR-WPAN设备体系结构下一更高层MAC MCPS-SAP MLME-SAP PHY PD-SAP PLME-SAP物理介质IEEE Std 802.15.4-2015用于低速率无线网络的IEEE标准50版权_2016 IEEE。版权所有。
+### 5.7 Functional overview
+#### 5.7.1 Superframe structure
+##### 5.7.1.1 Beacon superframe
+The format of the superframe is defined by the coordinator. The superframe is bounded by beacons (either
+Beacon frames or Enhanced Beacon Frames) sent by the coordinator, as illustrated in Figure 5-5a).
+Optionally, the superframe can have an active and an inactive portion, as illustrated in Figure 5-5b). During
+the inactive portion, the coordinator is able to enter a low-power mode. The beacon frame transmission starts
+at the beginning of the first slot of each superframe. If a coordinator does not wish to use a superframe
+structure, it will turn off the beacon transmissions. The beacons are used to synchronize the attached
+devices, to identify the PAN, and to describe the structure of the superframes.
+
+### 5.7 功能概括
+#### 5.7.1 超帧结构
+##### 5.7.1.1 信标超帧
+
+MAC子层提供两个服务：MAC数据服务和连接到MAC子层管理实体(MLME)服务接入点(SAP)的MAC管理服务(称为MLME-SAP)。MAC数据服务允许通过PHY数据服务发送和接收MAC协议数据单元(MPDU)。MAC子层的特征是信标管理、信道接入、GTS管理、帧验证、确认帧传送、关联和分离。此外，MAC子层提供用于实现适合应用程序的安全机制的挂钩。图5-4-LR-WPAN设备体系结构下一更高层MAC MCPS-SAP MLME-SAP PHY PD-SAP PLME-SAP物理介质IEEE Std 802.15.4-2015用于低速率无线网络的IEEE标准50版权_2016 IEEE。版权所有。
+### 5.7功能概述
+#### 5.7.1超帧结构
+#### 5.7.1.1信标超帧
+超帧的格式由协调器定义。超帧由协调器发送的信标（信标帧或增强信标帧）限制，如图5-5a所示。可选地，超帧可以具有活动部分和非活动部分，如图5-5b所示。在非活动部分期间，协调器能够进入低功率模式。信标帧传输开始于每个超帧的第一时隙的开始。如果协调器不想使用超帧结构，它将关闭信标传输。信标用于同步附加设备，识别PAN，以及描述超帧的结构。
+
+
+![image](https://note.youdao.com/yws/res/664/272391142EB94E92B8C336A6F75B76D4)
+Any device wishing to communicate during the contention access period (CAP) between two beacons
+competes with other devices using a slotted CSMA-CA or ALOHA mechanism, as appropriate. For
+low-latency applications or applications requiring specific data bandwidth, the PAN coordinator dedicates
+portions of the active superframe to that application. These portions are called guaranteed time slots (GTSs).
+The GTSs form the contention-free period (CFP), which always appears at the end of the active superframe
+starting at a slot boundary immediately following the CAP, as shown in Figure 5-6. The PAN coordinator
+allocates up to seven of these GTSs, and a GTS is allowed to occupy more than one slot period. However, a
+sufficient portion of the CAP remains for contention-based access of other networked devices or new
+devices wishing to join the network. All contention-based transactions are completed before the CFP begins.
+Also each device transmitting in a GTS ensures that its transaction is complete before the time of the next
+GTS or the end of the CFP. More information on the superframe structure can be found in 6.2.1.
+
+任何希望在两个信标之间的争用接入周期(CAP)期间通信的设备都酌情使用时隙CSMA-CA或ALOHA机制与其他设备竞争。对于需要特定数据带宽的低延迟应用程序或应用程序，PAN协调器将活动超帧的部分专用于该应用程序。这些部分被称为保证时隙（GTSS）。GTS形成无竞争周期（CFP），它总是出现在活动超帧的末尾，从紧跟在CAP之后的槽边界开始，如图5-6所示。PAN协调器分配这些GTS中最多七个，并且允许GTS占用多于一个时隙周期。然而，CAP的足够部分仍然用于其他联网设备或希望加入网络的新设备的基于竞争的访问。所有基于争用的事务都在CFP开始之前完成。此外，在GTS中传输的每个设备确保其事务在下一个GTS的时间或CFP结束之前完成。关于超帧结构的更多信息可以在6.2.1中找到。
+![image](https://note.youdao.com/yws/res/668/37CC2E2BE3684AB381B069594D6042F5)
+### 5.7.1.2 DSME multi-superframe structure
+PANs with deterministic and synchronous multi-channel extension (DSME) enabled use the DSME multisuperframe structure. The format of the DSME multi-superframe structure is defined by coordinators that
+periodically transmit an Enhanced Beacon frame with the DSME PAN descriptor IE. A multi-superframe is
+a cycle of repeated superframes, each of which consists of an Enhanced Beacon frame, a CAP and a CFP.
+An example of a multi-superframe structure is shown in Figure 5-7.
+
+启用了确定性和同步多信道扩展（DSME）的PAN使用DSME多超帧结构。DSME多超帧结构的格式由协调器定义，协调器定期发送具有DSME PAN描述符IE的增强信标帧。多超帧是重复超帧的循环，每个超帧由增强信标帧、CAP和CFP组成。多超帧结构的一个例子如图5-7所示。
+![image](https://note.youdao.com/yws/res/672/81D9844AA2C24DD5ADE9A4D5D3A0CA7F)
+
+The single common channel, the logical channel number used in the successful association, is used to
+transmit the enhanced beacon frames and the frames transmitted during the CAP. The channel diversity
+method, either channel adaptation or channel hopping as selected by macChannelDiversityMode, is applied
+to transmit Data frames and acknowledge frames during the CFP. Beacons are scheduled as defined in
+6.11.6. Frames sent during the CFP are transmitted using the allocated channel for DSME GTS. A DSME
+GTS can be allocated on any of the available channels in the current ChannelPage.
+Details on the DSME multi-superframes structure are described in 6.11.2.
+
+
+#### 5.7.1.3 Slotframes
+In a TSCH PAN, the concept of the superframe is replaced with a slotframe. The slotframe also contains
+defined periods of communications between peers that are either CSMA-CA or guaranteed, but the
+slotframe automatically repeats based on the participating devices’ shared notion of time. Unlike the
+superframe, slotframes and a device’s assigned timeslot(s) within the slotframe can be initially
+communicated by beacon, but are typically configured by a higher layer as the device joins the network.
+Because all devices share common time and channel information, devices hop over the entire channel space
+to minimize the negative effects of multipath fading and interference, and do so in a slotted way to avoid
+collisions, minimizing the need for retransmissions. Both of these features are desirable for operation in a
+harsh industrial environment.
+
+在TSCH-PAN中，超帧的概念用时隙帧代替。时隙帧还包含CSMA-CA或保证的对等体之间定义的通信周期，但是时隙帧基于参与设备的共享时间概念自动重复。与超帧不同，时隙帧和设备在时隙帧内分配的时隙最初可以通过信标进行通信，但是通常在设备加入网络时由更高层配置。因为所有设备共享公共的时间和信道信息，所以设备在整个信道空间上跳跃以最小化多径衰落和干扰的负面影响，并且以时隙方式跳跃，以避免冲突，最小化重传的需要。这两个特征对于在苛刻的工业环境中操作都是可取的。
+
+
+#### 5.7.1.4 TMCTP superframe
+TVWS allows the optional use of a superframe structure in a TMCTP that is extended by the addition of a
+BOP to the active portion of the superframe. The format of the TMCTP superframe is defined by the SPC
+which sends an enhanced beacon containing a TMCTP Specification IE, as in 7.4.4.28. The TMCTP
+superframe is bounded by beacons sent by the SPC. The active portion of the TMCTP superframe is
+composed of a beacon, a CAP, a CFP, and a BOP. An example of a TMCTP superframe including a BOP is
+illustrated in Figure 5-8. The BOP is composed of one or more DBSs. A DBS is used to communicate
+beacons between a TMCTP-parent PAN coordinator and one of its TMCTP-child PAN coordinator(s). More
+information on the TMCTP superframe structure can be found in 6.2.8.
+
+TVWS允许在TMCTP中任选地使用超帧结构，该TMCTP通过向超帧的活动部分添加BOP来扩展。TMCTP超帧的格式由SPC定义，SPC发送包含TMCTP规范IE的增强信标，如7.4.4.28所示。TMCTP超帧由SPC发送的信标界定，TMCTP超帧的活动部分由信标、CAP、CFP和BOP组成。图5-8中示出了包括BOP的TMCTP超帧的一个例子。BOP由一个或多个数据库组成。DBS用于在TMCTP父PAN协调器与其TMCTP子PAN协调器之一之间通信信标。更多关于TMCTP超帧结构的信息可以在62.8中找到。
+![image](https://note.youdao.com/yws/res/677/D01AFBC299BB4AD59AA010CB8341A972)
+
+### 5.7.2 Data transfer model
+#### 5.7.2.1 Types of data transfer models
+The data transfer models used in this standard are as follows:
+* Transfer to a coordinator in which a device transmits the data
+* Transfer from a coordinator in which the device receives the data
+* Transfer between two peer devices
+
+If a frame that is correctly received requests an acknowledgment, the device that received the frame will
+respond with one of the acknowledgment (Ack) frames: immediate acknowledgment (Imm-Ack), enhanced
+acknowledgment (Enh-Ack) or fragment acknowledgment (Frak) depending on the state of the network and
+the version number of the frame that was received.
+
+本标准中使用的数据传输模型如下：
+* 传输到设备发送数据的协调器
+* 从设备接收数据的协调器传送
+* 两个对等设备之间的传输
+如果正确接收的帧请求确认，则接收该帧的设备将根据网络的状态使用确认(Ack)帧中的一个来响应：立即确认(Imm-Ack)、增强确认(Enh-Ack)或片段确认(Frak)。K和接收到的帧的版本号。
+#### 5.7.2.2 Data transfer to a coordinator
+When a device wishes to transfer data to a coordinator in a beacon-enabled PAN, it first listens for the
+beacon. When the beacon is found, the device synchronizes to the superframe structure. At the appropriate
+time, the device transmits its Data frame to the coordinator.
+When a device wishes to transfer data in a nonbeacon-enabled PAN, it transmits its Data frame to the
+coordinator.
+
+当设备希望将数据传送到启用信标的PAN中的协调器时，它首先侦听信标。当找到信标时，设备同步到超帧结构。在适当的时间，设备将其数据帧发送到协调器。当设备希望在非信标支持PAN中传输数据时，它将其数据帧发送到协调器。
+#### 5.7.2.3 Data transfer from a coordinator
+When the coordinator wishes to transfer data to a device in a beacon-enabled PAN, it indicates in the beacon
+that the data message is pending. The device periodically listens to the beacon and, if a message is pending,
+transmits a Data Request command. The pending Data frame is then sent by the coordinator. Upon
+successful completion of the data transaction, the message is removed from the list of pending messages in
+the beacon.
+When a coordinator wishes to transfer data to a device in a nonbeacon-enabled PAN, it stores the data for the
+appropriate device to make contact and request the data. A device requests data by transmitting a Data
+Request command to its coordinator. If a Data frame is pending, the coordinator transmits the Data frame. If
+a Data frame is not pending, the coordinator indicates this fact either in the Ack frame following the Data
+Request command, if an acknowledgment was requested, or in a Data frame with a zero-length payload, as
+defined in 6.7.3.
+
+当协调器希望将数据传送到启用信标的PAN中的设备时，它在信标中指示数据消息正在挂起。设备定期监听信标，如果消息悬而未决，则发送数据请求命令。待处理的数据帧随后由协调器发送。成功完成数据事务后，该消息将从信标中的挂起消息列表中删除。当协调器希望将数据传送到非启用信标的PAN中的设备时，它存储数据以供适当的设备联系并请求数据。设备通过向其协调器发送数据请求命令来请求数据。如果数据帧悬而未决，协调器发送数据帧。如果数据帧没有挂起，则协调器在数据请求命令之后的Ack帧中、如果请求确认、或者在6.7.3中定义的具有零长度有效负载的数据帧中指示这一事实。
+#### 5.7.2.4 Peer-to-peer data transfers
+For peer-to-peer transfers, a device will either receive constantly or synchronize with each the other device.
+In the former case, the device attempts to transmit the data when it gains access to the channel. In the latter
+case, other measures need to be taken in order to achieve synchronization. Such measures are beyond the
+scope of this standard.
+
+对于点对点传输，设备要么持续接收，要么与其他设备同步。在前一种情况下，当设备获得对信道的访问时，它试图发送数据。在后一种情况下，需要采取其他措施以实现同步。这些措施超出了这个标准的范围。
+### 5.7.3 Frame structure
+The frame structures have been designed to keep the complexity to a minimum while at the same time
+making them sufficiently robust for transmission on a noisy channel.
+The MAC frames are passed to the PHY as the PHY service data unit (PSDU), which becomes the PHY
+payload. The PPDU is illustrated in Figure 5-9.
+
+框架结构被设计成在将复杂度保持在最小值的同时使它们在噪声信道上传输足够健壮。MAC帧作为PHY服务数据单元（PSDU）传递给PHY，该PSDU成为PHY有效载荷。PPDU如图5-9所示。
+
+![image](https://note.youdao.com/yws/res/731/252F758189DD4B13ACDDD51D0ADFC907)
+The format of the SHR and PHR is defined for each of the PHYs in their respective clause. The MHR and MFR are defined in 7.2. This standard makes use of IEs to transfer formatted data between layers and between devices. IEs consist of an identification, a length, and the IE content. Devices can accept or discard a particular element if the ID is known, and skip over unknown ID elements.
+
+SHR和PHR的格式是为各自子句中的每个PHY定义的。MHR和MFR定义在7.2。本标准利用IE在层之间和设备之间传输格式化数据。IES由标识、长度和IE内容组成。如果ID已知，则设备可以接受或丢弃特定元素，并跳过未知ID元素。
+### 5.7.4 Access methods
+The access methods defined in this standard are as follows:
+— Unslotted CSMA-CA used in nonbeacon-enabled PANs, as described in 6.2.5.1
+— Slotted CSMA-CA used in beacon-enabled PANs, as described in 6.2.5.1
+— TSCH CCA used in non-shared slots in a TSCH PAN, as described in 6.2.5.2
+— TSCH CSMA-CA used for shared slots in a TSCH PAN, as described in 6.2.5.3
+— CSMA-CA with PCA in for critical events, as described in 6.2.5.4
+— LECIM ALOHA with PCA, as defined in 6.2.5.5
+
+本标准中定义的访问方法如下：
+* 在非信标启用的PAN中使用的非时隙CSMA-CA，如在62.5.1中所描述的
+* 开槽的CSMA-CA用于信标启用的PAN，如在62.5.1中所描述的
+* TSCH CCA用于TSCH PAN中的非共享时隙，如在62.5.2中所描述的
+* TSCH CSMA-CA，用于在TSCH PAN中共享插槽，如在62.5.3中所描述的
+* CSMA-CA与PCA的临界事件，如在62.5.4中描述的
+* LeCIM ALOHA与PCA，如定义在2.2.5.5
+#### 5.7.4.1 Frame acknowledgment
+A successful reception and validation of a frame is optionally confirmed with an acknowledgment, as described in 6.7.4.
+
+帧的成功接收和验证可选地通过确认来确认，如6.7.4所述。
+#### 5.7.4.2 Frak
+The Frak is used during the fragment sequence transfer to determine which fragments have been received
+successfully and which fragments need to be retransmitted. A Frak includes the status of one or more
+fragments. The format of the Frak is given in 23.3.6.2.
+
+在片段序列传输期间使用该片段来确定哪些片段已被成功接收以及哪些片段需要重传。FRAK包含一个或多个片段的状态。FRAK的格式在23.3.62.中给出。
+#### 5.7.4.3 Data verification
+A cyclic redundancy check (CRC) is used to detect errors in every PSDU, as defined in 7.2.10.
+To accommodate individual fragment acknowledgments, a fragment integrity check sequence (FICS) is
+included with each fragment. The recipient uses the FICS and fragment number to determine which
+fragments of the sequence have been received correctly and which are missing. The FICS is described in
+23.3.3.
+
+循环冗余校验（CRC）用于检测每个PSDU中的错误，如7.2.10中所定义。为了适应单个片段确认，每个片段都包含片段完整性检查序列（FICS）。接收者使用FICS和片段号来确定正确接收了序列的哪些片段以及哪些片段丢失。FICS在23.3.3中描述。
+### 5.7.5 Power consumption considerations
+In many applications that use this standard, devices will be battery powered, and battery replacement or
+recharging in relatively short intervals is impractical. Therefore, the power consumption is of significant
+concern. This standard was developed with limited power supply availability in mind. However, the
+physical implementation of this standard will require additional power management considerations that are
+beyond the scope of this standard.
+The protocol has been developed to favor battery-powered devices. However, in certain applications, some
+of these devices could potentially be mains powered. Battery-powered devices will require duty-cycling to
+reduce power consumption. These devices will spend most of their operational life in a sleep state; however,
+each device periodically listens to the RF channel in order to determine whether a message is pending. This
+mechanism allows the application designer to decide on the balance between battery consumption and
+message latency. Higher powered devices have the option of listening to the RF channel continuously.
+In addition to the power saving features of the LR-WPAN system, the HRP UWB PHY also provides a
+hybrid modulation that enables very simple, noncoherent receiver architectures to further minimize power
+consumption and implementation complexity.
+
+在许多使用这个标准的应用中，设备将由电池供电，在相对短的时间间隔内更换或充电是不切实际的。因此，功耗是一个值得关注的问题。这个标准是在有限的电源可用性下开发的。然而，该标准的物理实现将需要超出本标准范围的额外的电源管理考虑。该协议已被开发为有利于电池供电的设备。然而，在某些应用中，这些设备中的一些可能由电源供电。电池供电的设备将需要占空比，以减少功耗。这些设备将在睡眠状态中度过其大部分操作寿命；然而，每个设备周期性地监听RF信道，以便确定消息是否挂起。这种机制允许应用程序设计者决定电池消耗和消息延迟之间的平衡。高功率设备可以连续收听RF信道。除了LR-WPAN系统的省电特性之外，HRP UWB PHY还提供混合调制，使得非常简单、非相干的接收机架构能够进一步最小化功耗和实现复杂性。
+#### 5.7.5.1 Low-energy mechanisms
+Low-energy mechanisms, coordinated sampled listening (CSL), as defined in 6.12.2, and receiver initiated
+transmission (RIT), as described in 6.12.3, are provided to further reduce energy consumption by allowing
+devices to communicate while maintaining low duty cycles.
+CSL allows receiving devices to periodically sample the channel(s) for incoming transmissions at low duty
+cycles. The receiving device and the transmitting device are coordinated to reduce transmitting overhead.
+
+提供低能量机制、6.12.2中定义的协调采样侦听(CSL)和6.12.3中描述的接收机发起传输(RIT)，以通过允许设备通信同时保持低占空比来进一步降低能耗。CSL允许接收设备周期性地采样信道，以便以低占空比进行传入传输。协调接收设备和发送设备以减少发送开销。
+#### 5.7.6 Security
+From a security perspective, wireless ad hoc networks are no different from any other wireless network.
+They are vulnerable to passive eavesdropping attacks and active tampering because physical access to the
+wire is not required to participate in communications. The very nature of ad hoc networks and their cost
+objectives impose additional security constraints, which perhaps make these networks the most difficult
+environments to secure. Devices are low-cost and have limited capabilities in terms of computing power,
+available storage, and power drain; and it cannot always be assumed they have a trusted computing base nor
+a high-quality random number generator aboard. Communications cannot rely on the online availability of a
+fixed infrastructure and might involve short-term relationships between devices that never have
+communicated before. These constraints severely limit the choice of cryptographic algorithms and protocols
+and influence the design of the security architecture because the establishment and maintenance of trust
+relationships between devices need to be addressed with care. In addition, battery lifetime and cost
+constraints put severe limits on the security overhead these networks can tolerate, something that is of far
+less concern with higher bandwidth networks. Most of these security architectural elements can be
+implemented at higher layers and, therefore, are outside the scope of this standard.
+The cryptographic mechanism in this standard is based on symmetric-key cryptography and uses keys that
+are provided by higher layer processes. The establishment and maintenance of these keys are outside the
+scope of this standard. The mechanism assumes a secure implementation of cryptographic operations and
+secure and authentic storage of keying material.
+The cryptographic mechanism provides particular combinations of the following security services:
+* Data confidentiality: Assurance that transmitted information is only disclosed to parties for which it
+is intended.
+* Data authenticity: Assurance of the source of transmitted information (and, hereby, that information
+was not modified in transit).
+* Replay protection: Assurance that duplicate information is detected.
+The actual frame protection provided can be adapted on a frame-by-frame basis and allows for varying
+levels of data authenticity (to minimize security overhead in transmitted frames where required) and for
+optional data confidentiality. When nontrivial protection is required, replay protection is always provided.
+Cryptographic frame protection uses either a key shared between two peer devices (link key) or a key shared
+among a group of devices (group key), thus allowing some flexibility and application-specific tradeoffs
+between key storage and key maintenance costs versus the cryptographic protection provided. If a group key
+is used for peer-to-peer communication, protection is provided only against outsider devices and not against
+potential malicious devices in the key-sharing group.
+Implementations should include mechanisms to prevent unauthorized access to locally stored keys.
+For more detailed information on the cryptographic security mechanisms used for protected MAC frames
+following this standard, refer to Clause 9
+
+从安全的角度来看，无线自组织网络与其他无线网络没有什么不同。它们容易受到被动窃听攻击和主动篡改，因为参与通信不需要物理访问线路。自组织网络的本质及其成本目标强加了额外的安全约束，这可能使这些网络成为最难安全的环境。设备是低成本的并且在计算能力、可用存储和功耗方面具有有限的能力；并且不能总是假定它们具有可信的计算基础或国外的高质量随机数生成器。通信不能依赖于固定基础设施的在线可用性，并且可能涉及以前从未通信的设备之间的短期关系。这些约束严重限制了密码算法和协议的选择，并影响安全体系结构的设计，因为需要小心地处理设备之间的信任关系的建立和维护。此外，电池寿命和成本限制严重限制了这些网络所能容忍的安全开销，这与更高带宽网络无关。这些安全架构元素中的大多数可以在更高层实现，因此超出了本标准的范围。本标准中的加密机制基于对称密钥加密，并使用较高层进程提供的密钥。这些密钥的建立和维护超出了本标准的范围。该机制假定加密操作的安全实现以及密钥材料的安全可靠的存储。加密机制提供以下安全服务的特定组合：
+* 数据保密：保证所传送的信息只向其所要传送的当事方公开。
+* 数据真实性：确保传输的信息源（以及，在此，该信息在运输过程中没有修改）。
+
+重放保护：确保检测到重复信息。所提供的实际帧保护可以在逐帧的基础上进行调整，并允许不同级别的数据真实性（在需要时最小化发送帧的安全开销）和可选的数据机密性。当需要非平凡保护时，总是提供重放保护。密码帧保护使用两个对等设备之间共享的密钥(链路密钥)或在一组设备之间共享的密钥(组密钥)，从而允许在密钥存储和密钥维护成本与密码保护提供者之间进行一些灵活性和特定于应用的权衡。德德。如果组密钥用于对等通信，则只对外部设备提供保护，而不对密钥共享组中的潜在恶意设备提供保护。实现应该包括防止对本地存储的密钥进行未经授权访问的机制。有关遵循本标准用于受保护MAC帧的密码安全机制的详细信息，请参阅第9条
+### 5.8 Concept of primitives
+The services of a layer are the capabilities it offers to the user in the next higher layer or sublayer by building
+its functions on the services of the next lower layer. This concept is illustrated in Figure 5-10, showing the
+service hierarchy and the relationship of the two correspondent users and their associated layer (or sublayer)
+peer protocol entities.
+
+一个层的服务是通过在下一个较低层的服务上构建其功能而向下一个较高层或子层中的用户提供的能力。这个概念如图5-10所示，显示了服务层次结构和两个对应用户及其关联层（或子层）对等协议实体之间的关系。
+
+![image](https://note.youdao.com/yws/res/693/47DEE666E3D34FF3A70E7CAE9BA44322)
+The services are specified by describing the information flow between the N-user and the N-layer. This
+information flow is modeled by discrete, instantaneous events, which characterize the provision of a service.
+Each event consists of passing a service primitive from one layer to the other through a layer SAP associated
+with an N-user. Service primitives convey the required information by providing a particular service. These
+service primitives are an abstraction because they specify only the provided service rather than the means by
+which it is provided. This definition is independent of any other interface implementation.
+A service is specified by describing the service primitives and parameters that characterize it.
+A primitive can be one of four generic types:
+
+* Request: The request primitive is used to request that a service is initiated.
+
+* Indication: The indication primitive is used to indicate to the user an internal event.
+
+* Response: The response primitive is used to complete a procedure previously invoked by an
+indication primitive.
+
+* Confirm: The confirm primitive is used to convey the results of one or more associated previous
+service requests.
+
+通过描述N用户和N层之间的信息流来指定服务。该信息流由离散的瞬时事件建模，这些事件表征了服务的提供。每个事件包括通过与N用户相关联的层SAP将服务原语从一个层传递到另一个层。服务原语通过提供特定的服务来传递所需的信息。这些服务原语是一个抽象，因为它们只指定所提供的服务，而不指定提供服务的方式。此定义与任何其他接口实现无关。通过描述服务原语和特征它的参数来指定服务。原语可以是四种泛型类型之一：
+* 请求：请求原语用于请求启动服务。
+* 指示：指示原语用于向用户指示内部事件。
+* 响应：响应原语用于完成之前由指示原语调用的过程。
+* 确认：确认原语用于传递一个或多个相关联的先前服务请求的结果。
+### 5.9 Deprecation of features
+Certain features that were in prior versions of this standard have either not seen wide use or are no longer in
+active development. In this case, these features are deprecated and can be removed in future versions of the
+standard. In the version of the standard, the following items are marked as deprecated:
+— Clause 14, Amplitude shift keying (ASK) PHY
+— Subclause 20.2.3, Mode Switch PHR
+— Subclause 20.5, Mode switch mechanism for SUN FSK
+
+本标准以前的版本中的某些特性要么没有得到广泛使用，要么不再处于活跃的开发中。在这种情况下，这些特性被弃用，可以在标准的未来版本中删除。在标准的版本中，下列项目被标记为弃用：-条款14，幅度移位键控（ASK）PHY-子条款20.2.3，模式切换PHR-子条款20.5，SUN FSK的模式切换机制
+
+
